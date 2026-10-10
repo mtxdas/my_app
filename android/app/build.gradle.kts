@@ -13,22 +13,24 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1.8
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.my_app"
         minSdk = 21
         targetSdk = flutter.targetSdkVersion
-        versionCode = flutterVersionCode.toInteger()
-        versionName = flutterVersionName
+        versionCode = flutter.versionCode.toInt()
+        versionName = flutter.versionName
     }
 
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
         }
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 
     flutter {
